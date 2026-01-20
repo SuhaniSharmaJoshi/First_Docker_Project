@@ -9,6 +9,8 @@ resource "aws_instance" "Docker_EC2" {
     vpc_security_group_ids = [aws_security_group.web.id]
     subnet_id = data.aws_subnets.default.ids[0]
 
+    user_data = file("user_data.sh")
+
     tags = {
       Name = var.instance_name
     }
