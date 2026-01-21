@@ -31,7 +31,7 @@ data "aws_subnets" "default" {
 
 resource "aws_security_group" "web" {
     name = "web-sg"
-    description = "Allow HTTP and SSH"
+    description = "Allow HTTP and SSH and flask"
     vpc_id = data.aws_vpc.default.id
 
     ingress {
@@ -47,6 +47,12 @@ resource "aws_security_group" "web" {
         protocol = "tcp"
         cidr_blocks = [ "0.0.0.0/0" ]
 
+    }
+    ingress {
+        from_port = 5000
+        to_port = 5000
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
     }
     egress {
         from_port = 0
