@@ -4,7 +4,7 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy dependencies file
-COPY requirements.txt .
+COPY requirements.txt ./
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -16,4 +16,4 @@ COPY . ./
 EXPOSE 5000
 
 # Run the app
-CMD ["python", "app/app.py"]
+CMD ["python", "app.py"]
